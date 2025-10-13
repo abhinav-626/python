@@ -1,0 +1,121 @@
+DAY 9: PYTHON FILE HANDLING:
+
+COMMANDS:
+- file = open('filename.txt', 'mode')
+      filename.txt: name (or path) of the file to be opened.
+      mode: mode in which you want to open the file (read, write, append, etc.)
+Note:  If you don’t specify the mode, Python uses 'r' (read mode) by default.
+       If the file exists, it returns a file object connected to that file; if the file does not exist, Python raises a FileNotFoundError.
+
+- The file.close() method closes the file and releases the system resources. If the file was opened in write or append mode, closing ensures that all changes are properly saved.
+
+f = open("geek.txt", "r")
+print("Filename:", f.name)/s
+print("Mode:", f.mode)
+print("Is Closed?", f.closed)
+
+f.close()
+print("Is Closed?", f.closed)
+
+
+Mode	Meaning	Description
+'r'	Read	Opens file for reading (error if file doesn’t exist)
+'w'	Write	Opens file for writing (creates a new file or overwrites existing)
+'a'	Append	Opens file for writing (adds data to the end of file)
+'x'	Create	Creates a new file (error if file already exists)
+'r+'	Read + Write	Opens file for both reading and writing
+'w+'	Write + Read	Overwrites existing file, allows reading
+'a+'	Append + Read	Opens for reading & appending
+'b'	Binary mode	Used for binary files (e.g., images, PDFs)
+'t'	Text mode	Default mode for text files
+
+
+Method	Description	Example
+.read(size)	Reads entire file or given number of characters	f.read(10)
+.readline()	Reads one line from the file	f.readline()
+.readlines()	Reads all lines into a list	lines = f.readlines()
+
+Method	Description	Example
+.write(string)	Writes a string	f.write("Hello")
+.writelines(list)	Writes a list of strings	f.writelines(["A\n", "B\n", "C\n"])
+
+.seek(offset)	Move cursor to position (in bytes)	f.seek(0)
+.tell()	Return current position of cursor	f.tell()
+
+.name	Name of the file	'demo.txt'
+.mode	Mode used to open file	'r'
+.closed	True if closed	True or False
+
+
+
+file = open("newfile.txt", "w")  # creates file if it doesn't exist
+file.write("This is my first file!\n")
+file.close()
+
+
+
+lines=["- Let's all cheer and celebrate the great festival of diwali. \n", "- I just love it\n", "- The festival brings us joy and blessing god in our lives and helps us get ahead in life."]
+file = open("newfile.txt", "w")
+file.write("- Python is the best language in th world. \n")
+file.writelines(lines)
+file.close()
+
+file=open("newfile.txt","r")
+content=file.readlines()
+for line in content:
+    print(line)
+file.close()
+
+with open("newfile.txt", "r") as f:
+    for line in f:
+        print(line.strip())
+
+
+with open("newfile.txt", "r") as f:
+    print(f.read(10))
+    print("Current position:", f.tell())
+    f.seek(0)
+    print("After seek:", f.read(5))
+
+
+Writing a CSV file manually using file handling
+
+data = [
+    "Name,Age,Grade\n",
+    "Alice,20,A\n",
+    "Bob,22,B\n",
+    "Charlie,19,A\n"
+]
+
+with open("students.csv", "w") as file:
+    file.writelines(data)
+
+print("CSV file created successfully!")
+with open("students.csv","r") as f:
+    content=f.readlines()
+    for line in content:
+        # print(line)
+        row = line.strip().split(",")
+        print(row)
+import csv
+
+data = [
+    {"Name": "John", "Age": 20, "Grade": "A"},
+    {"Name": "Mary", "Age": 22, "Grade": "B"},
+    {"Name": "Steve", "Age": 19, "Grade": "A"},
+]
+
+with open("students.csv", "a", newline="") as file:
+    fieldnames = ["Name", "Age", "Grade"]
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+    writer.writeheader()   # Write the column names
+    writer.writerows(data) # Write all rows
+
+line=["- I am sannith\n", "- I am a data scientist \n"]
+file = open("sannith.txt", "w")
+file.write("thisi is a good day")
+file.write("\n - this is anothe day at the office")
+file.writelines(line)
+file.close()
+file.write("THID II GMB MBODB")
