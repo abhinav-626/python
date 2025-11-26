@@ -1,11 +1,3 @@
 # python
-.
-.
-.
-.
-'.
 
-.
-.'
-
-This is repository for begineer friendly python programs
+This is repository for begineer friendly python programs.
