@@ -1,6 +1,8 @@
 .
 .
 .
+.
+.
 ..
 .
 .
@@ -18,5 +20,6 @@ elif a.islpha():
     print("The given string is alphabet")
 else:
     print("The given string is special character")
+
 
 
